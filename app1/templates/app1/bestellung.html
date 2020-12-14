@@ -1,0 +1,30 @@
+{% extends 'app1/base.html' %}
+
+{% block titel %} 
+<h1><center>Bitte Bestellung eingeben</center></h1> 
+{% endblock titel %} 
+
+{% block content %}
+<form method="POST">
+{% csrf_token %}
+<form>
+  <div class="mb-3">
+    <label for="kunde" class="form-label">Kunde</label>
+    
+    <select class="form-select" id="kunde"aria-describedby="kundenhelp" name="kunde">
+        {%for zeile in kunden%}
+        <option value"0">{{zeile}}</option>
+        {% endfor %}
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="bestellung" class="form-label">Bestellung</label>
+    <input type="text" class="form-control" id="bestellung" aria-describedby="bestellungHelp">
+    <div id="bestellungHelp" class="form-text">Bitte Bestellung eingeben.</div>
+  </div>
+  
+    <button type="submit" class="btn btn-primary">Speichern</button>
+    <button type="submit" class="btn btn-success">neu</button>
+    <button type="reset" class="btn btn-danger">Abbrechen</button>
+</form>
+{% endblock content %}
